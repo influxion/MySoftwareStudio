@@ -1,17 +1,21 @@
-import AboutMe from './components/AboutMe'
-import AsciiObject from './components/AsciiObject'
-import Contact from './components/Contact'
-import Hero from './components/Hero'
-import HeroHeading from './components/HeroText'
-import Reports from './components/Reports'
+import { getAllPosts, getAllProjects } from 'src/lib/sanity.client'
 
-export default function HomePage() {
+import AboutMe from './components/AboutMe'
+import Hero from './components/Hero'
+import Projects from './components/Projects'
+import Reports from './components/Reports'
+import StarsBackground from './components/StarsBackground'
+
+export default async function HomePage() {
+  const projects = await getAllProjects()
+  const posts = await getAllPosts()
   return (
     <>
+      <StarsBackground />
       <Hero />
       <AboutMe />
-      <Reports />
-      <Contact />
+      <Reports posts={posts} />
+      <Projects projects={projects} />
     </>
   )
 }

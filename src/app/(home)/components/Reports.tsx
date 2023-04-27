@@ -9,20 +9,13 @@ import { Post } from 'src/lib/sanity.queries'
 
 import DraggableCarousel from '../../(GLOBALS)/components/DraggableCarousel'
 
-export default function Reports() {
+export default function Reports({ posts }: { posts: Post[] }) {
   const divRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [selectedPreview, setSelectedPreview] = useState()
-  const [posts, setPosts] = useState<Post[]>([])
   const [scrollerPercent, setScrollerPercent] = useState(0)
 
   useEffect(() => {
-    ;(async () => {
-      const posts = await Promise.resolve(getAllPosts())
-
-      setPosts(posts)
-    })()
-
     // scroll events
     const handleScroll = () => {
       if (divRef.current) {
@@ -56,7 +49,7 @@ export default function Reports() {
               ref={divRef}
             >
               <div
-                className={`bg-red-500 h-4 rounded absolute w-full`}
+                className={`bg-blue-500 h-4 rounded absolute w-full`}
                 style={{
                   top: `calc(${scrollerPercent}% - ${
                     scrollerPercent * 0.16
@@ -72,25 +65,12 @@ export default function Reports() {
               <span>breaking down secure systems.</span>
             </h2>
           </div>
-          <p className="mt-auto py-4 text-white/50 lg:text-base text-sm hidden lg:block">
-            <span>
-              Explore a comprehensive collection of articles and resources that
-            </span>
-            <span>
-              delve into the intricate world of cybersecurity. Uncover the
-              latest
-            </span>
-            <span>
-              trends, innovative strategies, and expert advice on designing,
-            </span>
-            <span>implementing, and maintaining secure systems.</span>
-          </p>
-          <div className="lg:hidden block mb-6 text-white/50 text-sm text-center">
+          <p className="mt-auto py-4 text-white/50 lg:text-base text-sm lg:text-left text-center">
             Explore a comprehensive collection of articles and resources that
             delve into the intricate world of cybersecurity. Uncover the latest
             trends, innovative strategies, and expert advice on designing,
             implementing, and maintaining secure systems.
-          </div>
+          </p>
         </div>
         <DraggableCarousel>
           {posts.map((post, i) => (
@@ -111,7 +91,7 @@ export default function Reports() {
         <div className="flex justify-center lg:mt-16 mt-6">
           <Link
             href="/posts"
-            className="bg-red-600 hover:bg-red-500 duration-200 px-4 py-2 rounded-full lg:text-xl text-base"
+            className="bg-blue-600 hover:bg-blue-500 duration-200 px-4 py-2 rounded-full lg:text-xl text-base"
           >
             All Reports
           </Link>

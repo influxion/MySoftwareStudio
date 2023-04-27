@@ -32,8 +32,8 @@ export default function Navigation() {
         scrolling ? '-translate-y-full' : 'translate-y-0'
       }`}
     >
-      <div className="max-w-[1232px] flex m-auto gap-4 justify-between px-4 py-2 md:py-4">
-        <Link
+      <div className="max-w-[1232px] flex m-auto gap-4 justify-center px-4 py-2 md:py-4">
+        {/* <Link
           href="/"
           className="max-h-full flex items-center md:gap-2 gap-1 link-underline link-underline-black"
         >
@@ -45,13 +45,16 @@ export default function Navigation() {
             className="md:max-h-[32px] max-h-[24px] object-contain"
           />
           <p className="md:text-4xl text-2xl font-bold">influxed</p>
-        </Link>
+        </Link> */}
         <div className="flex md:gap-8 gap-4 items-center md:text-xl text-lg font-light">
+          <Link href="/" className="link-underline link-underline-black">
+            Home
+          </Link>
           <Link href="/posts" className="link-underline link-underline-black">
             Posts
           </Link>
-          <Link href="/contact" className="link-underline link-underline-black">
-            Contact
+          <Link href="/resume" className="link-underline link-underline-black">
+            Resume
           </Link>
         </div>
       </div>

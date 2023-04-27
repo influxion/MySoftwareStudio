@@ -5,10 +5,10 @@ import JordonNichols from '../JordonNichols'
 export default function Footer() {
   return (
     <div className="w-full border-t border-white/10">
-      <div className="lg:flex justify-around md:py-48 py-24 lg:max-w-[1228px] m-auto w-fit px-8">
+      {/* <div className="lg:flex justify-around md:py-48 py-24 lg:max-w-[1228px] m-auto w-fit px-8">
         <div className="lg:w-1/4 w-full mb-4">
           <h5 className="sm:text-2xl text-xl font-light mb-2 relative text-center w-fit">
-            INFLUXED Developments
+            My Software Studio
             <span className="absolute bottom-0 left-0 w-3/4 h-0.5 bg-white/25 rounded-full"></span>
           </h5>
           <p className="sm:text-lg">
@@ -62,7 +62,7 @@ export default function Footer() {
             Contact
           </Link>
         </div>
-        <div className="lg:w-fit w-full mb-4">
+         <div className="lg:w-fit w-full mb-4">
           <h5 className="sm:text-2xl text-xl font-light mb-2 relative text-center w-fit">
             Contact
             <span className="absolute bottom-0 left-0 w-3/4 h-0.5 bg-white/25 rounded-full"></span>
@@ -73,12 +73,11 @@ export default function Footer() {
           >
             jordon@influxed
           </a>
-        </div>
-      </div>
+        </div> 
+      </div> */}
       <div className="md:p-8 flex md:justify-between text-white/50 border-t border-white/10 md:flex-row flex-col gap-2 items-center text-xs sm:text-sm md:text-base py-4 px-2">
         <p className="text-center">
-          Copyright © {new Date().getFullYear()}. INFLUXED Developments. All
-          rights reserved.
+          Copyright © {new Date().getFullYear()}. All rights reserved.
         </p>
         <p>
           Built with care by <JordonNichols />

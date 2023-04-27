@@ -8,9 +8,9 @@ import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
 import Navigation from './(GLOBALS)/components/layout/Navigation'
 
 export const metadata = {
-  title: 'INFLUXED Developments',
+  title: 'My Software Studio',
   description:
-    'Delve into a comprehensive collection of reports, studies and posts. Featuring expert opinions, best practices and the best cybersec information.',
+    "Jordon Nichols' personal portfolio offering a curated selection of top-notch reports and projects, demonstrating skills and expertise as a software and security engineer. Explore to get a glimpse of my professional accomplishments and innovative solutions.",
 }
 
 export default function RootLayout({

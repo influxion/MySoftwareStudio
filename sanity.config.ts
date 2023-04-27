@@ -7,6 +7,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import authorType from 'src/schemas/author'
 import categoryType from 'src/schemas/category'
 import postType from 'src/schemas/post'
+import projectType from 'src/schemas/project'
 import {
   apiVersion,
   dataset,
@@ -24,7 +25,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [authorType, postType, categoryType],
+    types: [authorType, postType, categoryType, projectType],
   },
   plugins: [
     deskTool({

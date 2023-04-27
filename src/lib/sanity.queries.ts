@@ -11,11 +11,25 @@ const postFields = groq`
   "category": category->{title, description, picture},
 `
 
+const projectFields = groq`
+  _id,
+  title,
+  excerpt,
+  coverImage,
+  githubUrl,
+  demoUrl,
+`
+
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
+}`
+
+export const projectQuery = groq`
+*[_type == "project"] {
+  ${projectFields}
 }`
 
 export const postAndMoreStoriesQuery = groq`
@@ -61,6 +75,15 @@ export interface Post {
   slug?: string
   category?: Category
   content?: any
+}
+
+export interface Project {
+  _id: string
+  title?: string
+  coverImage?: any
+  excerpt?: string
+  githubUrl?: string
+  demoUrl?: string
 }
 
 export interface Settings {
