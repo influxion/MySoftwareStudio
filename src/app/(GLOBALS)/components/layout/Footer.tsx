@@ -79,9 +79,9 @@ export default function Footer() {
         <p className="text-center">
           Copyright © {new Date().getFullYear()}. All rights reserved.
         </p>
-        <p>
-          Built with care by <JordonNichols />
-        </p>
+        <div className="flex gap-1 items-center">
+          <span>Built with care by</span> <JordonNichols />
+        </div>
       </div>
     </div>
   )

@@ -1,6 +1,71 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 
+class Terrain {
+  terCtx: CanvasRenderingContext2D
+  scrollDelay: number
+  lastScroll: number
+  terrain: HTMLCanvasElement
+  fillStyle: string
+  mHeight: number
+  points: number[]
+
+  constructor(options: any) {
+    this.terrain = document.createElement('canvas')
+    this.terCtx = this.terrain.getContext('2d') as CanvasRenderingContext2D
+    this.scrollDelay = options.scrollDelay || 90
+    this.lastScroll = new Date().getTime()
+
+    this.terrain.width = options.width
+    this.terrain.height = options.height
+    this.fillStyle = options.fillStyle || '#191D4C'
+    this.mHeight = options.mHeight || options.height
+
+    // Generate terrain points
+    this.points = []
+
+    let displacement = options.displacement || 140
+    let power = Math.pow(2, Math.ceil(Math.log(options.width) / Math.log(2)))
+
+    this.points[0] = this.mHeight
+    this.points[power] = this.points[0]
+
+    for (let i = 1; i < power; i *= 2) {
+      for (let j = power / i / 2; j < power; j += power / i) {
+        this.points[j] =
+          (this.points[j - power / i / 2] + this.points[j + power / i / 2]) /
+            2 +
+          Math.floor(Math.random() * -displacement + displacement)
+      }
+      displacement *= 0.6
+    }
+  }
+
+  update() {
+    this.terCtx.clearRect(0, 0, this.terrain.width, this.terrain.height)
+    this.terCtx.fillStyle = this.fillStyle
+
+    if (new Date().getTime() > this.lastScroll + this.scrollDelay) {
+      this.lastScroll = new Date().getTime()
+      this.points.push(this.points.shift() as number)
+    }
+
+    this.terCtx.beginPath()
+    for (let i = 0; i <= this.terrain.width; i++) {
+      if (i === 0) {
+        this.terCtx.moveTo(0, this.points[0])
+      } else if (this.points[i] !== undefined) {
+        this.terCtx.lineTo(i, this.points[i])
+      }
+    }
+
+    this.terCtx.lineTo(this.terrain.width, this.terrain.height)
+    this.terCtx.lineTo(0, this.terrain.height)
+    this.terCtx.lineTo(0, this.points[0])
+    this.terCtx.fill()
+  }
+}
+
 interface StarOptions {
   x: number
   y: number
@@ -90,12 +155,14 @@ class ShootingStar {
 const StarsBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [screenSize, setScreenSize] = useState({ width: 0, height: 0 })
+  const [entities, setEntities] = useState<any[]>([])
+  const animationId = useRef<number | null>(null)
 
   useEffect(() => {
     const updateScreenSize = () => {
       setScreenSize({
         width: window.innerWidth,
-        height: document.body.offsetHeight,
+        height: window.innerHeight,
       })
     }
 
@@ -108,6 +175,8 @@ const StarsBackground = () => {
   }, [])
 
   useEffect(() => {
+    if (screenSize.width === 0 || screenSize.height === 0) return
+
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
@@ -116,14 +185,14 @@ const StarsBackground = () => {
     canvas.width = screenSize.width
     canvas.height = screenSize.height
 
-    ctx.fillStyle = '#05004c'
+    ctx.fillStyle = '#111'
     ctx.fillRect(0, 0, screenSize.width, screenSize.height)
 
-    const entities: any[] = []
+    const newEntities: any[] = []
 
     // Initialize the stars
     for (let i = 0; i < screenSize.height; i++) {
-      entities.push(
+      newEntities.push(
         new Star({
           x: Math.random() * screenSize.width,
           y: Math.random() * screenSize.height,
@@ -131,13 +200,55 @@ const StarsBackground = () => {
       )
     }
 
-    // Add 2 shooting stars
-    entities.push(new ShootingStar())
-    entities.push(new ShootingStar())
+    // Add 3 shooting stars
+    newEntities.push(new ShootingStar())
+    newEntities.push(new ShootingStar())
+    newEntities.push(new ShootingStar())
+
+    // Add terrain
+    newEntities.push(
+      new Terrain({
+        width: screenSize.width,
+        height: screenSize.height,
+        // scrollDelay: 50,
+        mHeight: screenSize.height / 1.25 - 60,
+      })
+    )
+    newEntities.push(
+      new Terrain({
+        width: screenSize.width,
+        height: screenSize.height + 120,
+        displacement: 120,
+        scrollDelay: 50,
+        fillStyle: 'rgb(17,20,40)',
+        mHeight: screenSize.height / 1.25,
+      })
+    )
+    newEntities.push(
+      new Terrain({
+        width: screenSize.width,
+        height: screenSize.height,
+        displacement: 100,
+        scrollDelay: 20,
+        fillStyle: 'rgb(17, 17, 17)',
+        mHeight: screenSize.height / 1.25 + 60,
+      })
+    )
+
+    setEntities(newEntities)
+  }, [screenSize])
+
+  useEffect(() => {
+    if (entities.length === 0) return
+
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
     function animate() {
       if (!ctx) return
-      ctx.fillStyle = '#111'
+      ctx.fillStyle = '#110E19'
       ctx.fillRect(0, 0, screenSize.width, screenSize.height)
       ctx.fillStyle = '#ffffff'
       ctx.strokeStyle = '#ffffff'
@@ -147,10 +258,13 @@ const StarsBackground = () => {
           entity.update(ctx)
         } else if (entity instanceof ShootingStar) {
           entity.update(ctx, screenSize.height)
+        } else if (entity instanceof Terrain) {
+          ctx.drawImage(entity.terrain, 0, 0)
+          entity.update()
         }
       })
 
-      requestAnimationFrame(animate)
+      animationId.current = requestAnimationFrame(animate)
     }
 
     animate()
@@ -165,10 +279,11 @@ const StarsBackground = () => {
           clearTimeout(id)
         }
 
-      //@ts-expect-error
-      cancelAnimationFrame(animate)
+      if (animationId.current) {
+        cancelAnimationFrame(animationId.current)
+      }
     }
-  }, [screenSize])
+  }, [entities, screenSize])
 
   return (
     <canvas

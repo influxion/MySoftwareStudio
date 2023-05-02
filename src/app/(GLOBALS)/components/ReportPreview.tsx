@@ -34,7 +34,7 @@ export default function ReportItem({
   }
   return (
     <div
-      className={`text-sm lg:text-lg p-6 lg:p-12 flex flex-col justify-between bg-neutral-800/25 border-gray-400/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
+      className={`text-sm lg:text-lg p-6 lg:p-12 flex flex-col justify-between bg-neutral-900/75 border-gray-400/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
         selectedPreview === number
           ? '!border-blue-500 !from-blue-500/25 !shadow-blue-500/25 !shadow-lg !rounded-br-4xl'
           : ''

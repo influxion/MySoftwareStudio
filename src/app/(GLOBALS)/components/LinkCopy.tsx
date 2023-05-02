@@ -13,7 +13,7 @@ export default function LinkCopy({ children, copyText, className = '' }) {
   return (
     <button
       onClick={handleCopyClick}
-      className={`font-bold hover:text-blue-500 focus:text-blue-500 hover:underline px-2 rounded-md ${className}`}
+      className={`font-bold hover:text-blue-500 focus:text-blue-500 hover:underline px-2 rounded-lg ${className}`}
     >
       {isCopied ? <i className="fa-solid fa-clipboard-check"></i> : children}
     </button>

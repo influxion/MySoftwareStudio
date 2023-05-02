@@ -11,8 +11,10 @@ export default async function HomePage() {
   const posts = await getAllPosts()
   return (
     <>
-      <StarsBackground />
-      <Hero />
+      <div className="h-screen">
+        <StarsBackground />
+        <Hero />
+      </div>
       <AboutMe />
       <Reports posts={posts} />
       <Projects projects={projects} />

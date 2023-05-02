@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 
-const MatrixImage = ({ src, width, height }) => {
+const MatrixProject = ({ src, width, height, children }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = useRef<HTMLImageElement>(null)
 
@@ -22,7 +22,7 @@ const MatrixImage = ({ src, width, height }) => {
       const percentX = (mouseX - centerX) / centerX
       const percentY = (mouseY - centerY) / centerY
 
-      const maxRotation = 20
+      const maxRotation = 15
       const rotateY = percentX * maxRotation
       const rotateX = -percentY * maxRotation
 
@@ -49,17 +49,22 @@ const MatrixImage = ({ src, width, height }) => {
   }, [])
 
   return (
-    <div ref={containerRef} style={{ perspective: '1000px' }}>
+    <div
+      ref={containerRef}
+      style={{ perspective: '1000px' }}
+      className="relative"
+    >
       <Image
         ref={boxRef}
         src={src}
         width={width}
         height={height}
         alt="Matrix Box"
-        className="w-full h-full transition-transform duration-100 ease-in object-contain"
+        className="w-full h-full object-contain rounded-lg ease-in duration-100"
       />
+      {children}
     </div>
   )
 }
 
-export default MatrixImage
+export default MatrixProject
