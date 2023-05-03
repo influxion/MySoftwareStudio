@@ -21,12 +21,12 @@ export default function Projects({ projects }: { projects: Project[] }) {
                 height={600}
                 src={urlForImage(project.coverImage).url()}
               >
-                <div className="absolute top-0 w-full mt-4 ml-6 select-none">
+                <div className="absolute top-0 w-[60%] p-4 select-none backdrop-blur-sm rounded-lg">
                   <div className="w-fit mb-4">
                     <h3 className=" text-5xl font-light">{project.title}</h3>
                     <div className="border rounded-full border-blue-500 w-2/3"></div>
                   </div>
-                  <p className="w-1/2 text-white/50">
+                  <p className="w-full text-white/50">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Labore maiores illum atque perspiciatis inventore non!
                     Quaerat tenetur nisi reiciendis minus adipisci explicabo

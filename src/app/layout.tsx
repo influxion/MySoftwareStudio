@@ -6,6 +6,7 @@ import Script from 'next/script'
 import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
 
 import Navigation from './(GLOBALS)/components/layout/Navigation'
+import Socials from './(GLOBALS)/components/layout/Socials'
 
 export const metadata = {
   title: 'My Software Studio',
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body>
         <Navigation />
         <main>{children}</main>
+        <Socials />
         <Footer />
       </body>
     </html>

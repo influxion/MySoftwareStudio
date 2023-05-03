@@ -1,16 +1,33 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const MatrixProject = ({ src, width, height, children }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = useRef<HTMLImageElement>(null)
+  const [mouseOn, setMouseOn] = useState<Boolean>(false)
+
+  useEffect(() => {
+    const box = boxRef.current
+    if (box) {
+      if (mouseOn) {
+        setTimeout(() => {
+          box.style.transitionDuration = '0ms'
+        }, 100)
+      } else {
+        box.style.transitionDuration = '100ms'
+      }
+    }
+  }, [mouseOn])
 
   useEffect(() => {
     const container = containerRef.current
     const box = boxRef.current
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!mouseOn) {
+        setMouseOn(true)
+      }
       if (!container || !box) return
 
       const mouseX = e.clientX - container.getBoundingClientRect().left
@@ -30,6 +47,7 @@ const MatrixProject = ({ src, width, height, children }) => {
     }
 
     const handleMouseLeave = () => {
+      setMouseOn(false)
       if (box) {
         box.style.transform = 'rotateX(0deg) rotateY(0deg)'
       }
