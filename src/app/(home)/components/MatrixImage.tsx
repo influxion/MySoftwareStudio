@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 
-const MatrixProject = ({ src, width, height, children }) => {
+const MatrixImage = ({ src, width, height }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = useRef<HTMLImageElement>(null)
   const [mouseOn, setMouseOn] = useState<Boolean>(false)
@@ -10,13 +10,14 @@ const MatrixProject = ({ src, width, height, children }) => {
   useEffect(() => {
     const box = boxRef.current
     if (box) {
-      if (mouseOn) {
-        setTimeout(() => {
-          box.style.transitionDuration = '0ms'
-        }, 100)
-      } else {
-        box.style.transitionDuration = '100ms'
-      }
+      console.log(mouseOn)
+      // if (mouseOn) {
+      //   setTimeout(() => {
+      //     box.style.transitionDuration = '0ms'
+      //   }, 150)
+      // } else {
+      //   box.style.transitionDuration = '100ms'
+      // }
     }
   }, [mouseOn])
 
@@ -64,7 +65,7 @@ const MatrixProject = ({ src, width, height, children }) => {
         container.removeEventListener('mouseleave', handleMouseLeave)
       }
     }
-  }, [])
+  }, [mouseOn])
 
   return (
     <div
@@ -78,11 +79,10 @@ const MatrixProject = ({ src, width, height, children }) => {
         width={width}
         height={height}
         alt="Matrix Box"
-        className="w-full h-full object-contain rounded-lg ease-in duration-100"
+        className="w-full h-full object-contain rounded-lg ease-in duration-75"
       />
-      {children}
     </div>
   )
 }
 
-export default MatrixProject
+export default MatrixImage

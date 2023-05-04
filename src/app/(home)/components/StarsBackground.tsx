@@ -18,7 +18,7 @@ class Terrain {
 
     this.terrain.width = options.width
     this.terrain.height = options.height
-    this.fillStyle = options.fillStyle || '#191D4C'
+    this.fillStyle = options.fillStyle || 'rgb(23, 23, 23)'
     this.mHeight = options.mHeight || options.height
 
     // Generate terrain points
@@ -220,7 +220,7 @@ const StarsBackground = () => {
         height: screenSize.height + 120,
         displacement: 120,
         scrollDelay: 50,
-        fillStyle: 'rgb(17,20,40)',
+        fillStyle: 'rgb(20, 20, 20)',
         mHeight: screenSize.height / 1.25,
       })
     )
@@ -248,7 +248,7 @@ const StarsBackground = () => {
 
     function animate() {
       if (!ctx) return
-      ctx.fillStyle = '#110E19'
+      ctx.fillStyle = 'rgb(16, 16, 16)'
       ctx.fillRect(0, 0, screenSize.width, screenSize.height)
       ctx.fillStyle = '#ffffff'
       ctx.strokeStyle = '#ffffff'

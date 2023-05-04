@@ -12,6 +12,7 @@ module.exports = {
         'blue-500': '#2276FC',
         'yellow-100': '#fef7da',
         grey: '#111',
+        darkergrey: 'rgb(20, 20, 20)',
       },
       spacing: {
         28: '7rem',
