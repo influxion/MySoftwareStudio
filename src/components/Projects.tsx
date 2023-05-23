@@ -1,6 +1,6 @@
 import { faCode } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import RevealDiv from 'src/app/(GLOBALS)/components/RevealDiv'
+import RevealDiv from 'src/components/global/RevealDiv'
 import { urlForImage } from 'src/lib/sanity.image'
 import { Project } from 'src/lib/sanity.queries'
 

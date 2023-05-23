@@ -32,30 +32,17 @@ export default function Navigation() {
         scrolling ? '-translate-y-full' : 'translate-y-0'
       }`}
     >
-      <div className="max-w-[1440px] flex m-auto gap-4 justify-between px-4 py-2 md:py-4">
-        {/* <Link
-          href="/"
-          className="max-h-full flex items-center md:gap-2 gap-1 link-underline link-underline-black"
-        >
-          <Image
-            src="/favicon/icon.png"
-            width={32}
-            height={32}
-            alt="icon"
-            className="md:max-h-[32px] max-h-[24px] object-contain"
-          />
-          <p className="md:text-4xl text-2xl font-bold">influxed</p>
-        </Link> */}
+      <div className="max-w-[1440px] flex m-auto gap-4 justify-center px-4 py-2 md:py-4">
+        {/* <div className="flex md:gap-8 gap-4 items-center md:text-xl text-lg font-light">
+        </div> */}
         <div className="flex md:gap-8 gap-4 items-center md:text-xl text-lg font-light">
           <Link href="/" className="link-underline link-underline-black">
             Home
           </Link>
-        </div>
-        <div className="flex md:gap-8 gap-4 items-center md:text-xl text-lg font-light">
           <Link href="/posts" className="link-underline link-underline-black">
             Posts
           </Link>
-          <Link href="/resume" className="link-underline link-underline-black">
+          {/* <Link href="/resume" className="link-underline link-underline-black">
             Resume
           </Link>
           <Link
@@ -63,7 +50,7 @@ export default function Navigation() {
             className="border-2 border-blue-500 px-4 py-1 md:text-xl text-lg font-light rounded-lg hover:bg-blue-500 duration-150"
           >
             Studio
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

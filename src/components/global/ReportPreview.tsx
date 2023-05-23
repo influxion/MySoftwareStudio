@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import BackgroundGrid from 'src/app/(GLOBALS)/components/BackgroundGrid'
+import BackgroundGrid from 'src/components/global/BackgroundGrid'
 import { urlForImage } from 'src/lib/sanity.image'
 
 export default function ReportItem({
@@ -34,7 +34,7 @@ export default function ReportItem({
   }
   return (
     <div
-      className={`text-sm lg:text-lg p-6 lg:p-12 flex flex-col justify-between bg-neutral-800/10 border-gray-400/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
+      className={`text-sm lg:text-lg p-6 lg:p-12 flex flex-col justify-between bg-neutral-900/10 border-gray-400/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
         selectedPreview === number
           ? '!border-blue-500 !from-blue-500/25 !shadow-blue-500/25 !shadow-lg !rounded-br-4xl'
           : ''

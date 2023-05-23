@@ -1,12 +1,12 @@
 import 'tailwindcss/tailwind.css'
-import './(GLOBALS)/global.css'
+import './global.css'
 
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
-import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
+import Footer from 'src/components/layout/Footer'
 
-import Navigation from './(GLOBALS)/components/layout/Navigation'
-import Socials from './(GLOBALS)/components/layout/Socials'
+import Navigation from '../components/layout/Navigation'
+import Socials from '../components/layout/Socials'
 
 export const metadata = {
   title: 'My Software Studio',
@@ -42,8 +42,8 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
-        <Navigation />
+      <body className='h-[100dvh]'>
+        {/* <Navigation /> */}
         <main>{children}</main>
         <Socials />
         <Footer />

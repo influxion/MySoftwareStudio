@@ -2,13 +2,13 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
-import ReportPreview from 'src/app/(GLOBALS)/components/ReportPreview'
-import RevealDiv from 'src/app/(GLOBALS)/components/RevealDiv'
+import ReportPreview from 'src/components/global/ReportPreview'
+import RevealDiv from 'src/components/global/RevealDiv'
 import useMobileDetect from 'src/hooks/useMobileDetect'
 import { getAllPosts } from 'src/lib/sanity.client'
 import { Post } from 'src/lib/sanity.queries'
 
-import DraggableCarousel from '../../(GLOBALS)/components/DraggableCarousel'
+import DraggableCarousel from '../components/global/DraggableCarousel'
 
 export default function Reports({ posts }: { posts: Post[] }) {
   const divRef = useRef<HTMLDivElement>(null)
@@ -38,41 +38,13 @@ export default function Reports({ posts }: { posts: Post[] }) {
   }, [])
 
   return (
-    <div className="w-full flex flex-col justify-center z-20 relative my-24 md:my-48 bg-darkergrey">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        id="visual"
-        viewBox="0 0 1440 150"
-        version="1.1"
-        className="absolute top-0 z-50 w-full -translate-y-full"
-      >
-        <path
-          d="M0 95L34.3 90.5C68.7 86 137.3 77 205.8 70.8C274.3 64.7 342.7 61.3 411.2 62C479.7 62.7 548.3 67.3 617 69C685.7 70.7 754.3 69.3 823 67.3C891.7 65.3 960.3 62.7 1028.8 66C1097.3 69.3 1165.7 78.7 1234.2 77.3C1302.7 76 1371.3 64 1405.7 58L1440 52L1440 151L1405.7 151C1371.3 151 1302.7 151 1234.2 151C1165.7 151 1097.3 151 1028.8 151C960.3 151 891.7 151 823 151C754.3 151 685.7 151 617 151C548.3 151 479.7 151 411.2 151C342.7 151 274.3 151 205.8 151C137.3 151 68.7 151 34.3 151L0 151Z"
-          fill="#141414"
-          stroke-linecap="round"
-          stroke-linejoin="miter"
-        />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        id="visual"
-        viewBox="0 0 1440 150"
-        version="1.1"
-        className="absolute bottom-0 z-50 w-full translate-y-full"
-      >
-        <path
-          d="M0 90L34.3 90.8C68.7 91.7 137.3 93.3 205.8 88.5C274.3 83.7 342.7 72.3 411.2 70.8C479.7 69.3 548.3 77.7 617 82.2C685.7 86.7 754.3 87.3 823 82.5C891.7 77.7 960.3 67.3 1028.8 67.5C1097.3 67.7 1165.7 78.3 1234.2 77.7C1302.7 77 1371.3 65 1405.7 59L1440 53L1440 0L1405.7 0C1371.3 0 1302.7 0 1234.2 0C1165.7 0 1097.3 0 1028.8 0C960.3 0 891.7 0 823 0C754.3 0 685.7 0 617 0C548.3 0 479.7 0 411.2 0C342.7 0 274.3 0 205.8 0C137.3 0 68.7 0 34.3 0L0 0Z"
-          fill="#141414"
-          stroke-linecap="round"
-          stroke-linejoin="miter"
-        />
-      </svg>
+    <div className="w-full flex flex-col justify-center z-20 relative">
       <RevealDiv>
         <div
           className="max-w-[1440px] m-auto lg:overflow-visible overflow-hidden w-full"
           ref={containerRef}
         >
-          <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row px-4">
+          {/* <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row px-4">
             <div className="flex lg:gap-16 gap-6 lg:justify-start justify-center">
               <div
                 className="rounded lg:flex flex-col hidden gap-1 relative w-2"
@@ -101,7 +73,7 @@ export default function Reports({ posts }: { posts: Post[] }) {
               latest trends, innovative strategies, and expert advice on
               designing, implementing, and maintaining secure systems.
             </p>
-          </div>
+          </div> */}
           <DraggableCarousel>
             {posts.map((post, i) => (
               <ReportPreview

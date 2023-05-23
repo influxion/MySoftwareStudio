@@ -1,5 +1,5 @@
 import React from 'react'
-import RevealDiv from 'src/app/(GLOBALS)/components/RevealDiv'
+import RevealDiv from 'src/components/global/RevealDiv'
 
 export default function AboutMe() {
   return (

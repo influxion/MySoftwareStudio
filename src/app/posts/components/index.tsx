@@ -1,4 +1,4 @@
-import MoreStories from 'src/app/(GLOBALS)/components/MoreStories'
+import MoreStories from 'src/components/global/MoreStories'
 import Container from 'src/app/posts/components/BlogContainer'
 import BlogHeader from 'src/app/posts/components/BlogHeader'
 import HeroPost from 'src/app/posts/components/HeroPost'

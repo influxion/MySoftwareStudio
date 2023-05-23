@@ -15,7 +15,7 @@ export default function Socials() {
           ></i>
         </a>
         <a
-          href="https://www.linkedin.com/in/jordon-nichols/"
+          href="https://www.linkedin.com/in/jordonnichols/"
           target="_blank"
           rel="noopener noreferer"
         >

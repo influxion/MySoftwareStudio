@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import DraggableCarousel from 'src/app/(GLOBALS)/components/DraggableCarousel'
+import DraggableCarousel from 'src/components/global/DraggableCarousel'
 import type { Post } from 'src/lib/sanity.queries'
 
 import ReportPreview from './ReportPreview'

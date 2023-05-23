@@ -70,31 +70,31 @@ h1 {
 
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../../assets/fonts/HelveticaNeue-Black.otf');
+  src: url('../assets/fonts/HelveticaNeue-Black.otf');
   font-weight: 900;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../../assets/fonts/HelveticaNeue-Bold.ttf');
+  src: url('../assets/fonts/HelveticaNeue-Bold.ttf');
   font-weight: 700;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../../assets/fonts/HelveticaNeue-Medium.otf');
+  src: url('../assets/fonts/HelveticaNeue-Medium.otf');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../../assets/fonts/HelveticaNeue.otf');
+  src: url('../assets/fonts/HelveticaNeue.otf');
   font-weight: 400;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../../assets/fonts/HelveticaNeue-Italic.ttf');
+  src: url('../assets/fonts/HelveticaNeue-Italic.ttf');
   font-style: italic;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../../assets/fonts/HelveticaNeue-Light.otf');
+  src: url('../assets/fonts/HelveticaNeue-Light.otf');
   font-weight: 200;
 }
